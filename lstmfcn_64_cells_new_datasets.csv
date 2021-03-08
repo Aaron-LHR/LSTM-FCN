@@ -514,3 +514,5 @@ dataset_id,dataset_name,dataset_name_,test_accuracy
 0,Adiac,lstmfcn_64_cells_weights/Adiac,0.693095
 0,Adiac,Adiac,0.700767
 8,Beef,Beef,0.800000
+0,Adiac,Adiac,0.030691,14.358422
+8,Beef,Beef,0.266667,1.638334

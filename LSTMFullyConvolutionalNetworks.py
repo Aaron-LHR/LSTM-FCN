@@ -2,8 +2,7 @@ import os
 
 import torch
 
-from drive.MyDrive.auto_aug.auto_aug.ucr_dataset import UCRDataset
-from drive.MyDrive.auto_aug.auto_aug.utils.constants import NB_CLASSES_LIST
+
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -60,7 +59,7 @@ class LSTM_FCN(torch.nn.Module):
         return label
 
 
-def train_model(model, dname, epochs, batch_size, ucrDataset, K=1):
+def train_model(model, dname, epochs, batch_size, ucrDataset, is_on_the_colabpratory, K=1):
     model.to(device)
     model.train()
     loss_fn = torch.nn.CrossEntropyLoss()
@@ -88,10 +87,15 @@ def train_model(model, dname, epochs, batch_size, ucrDataset, K=1):
             print(" train loss:", total_loss, "epoch:", k * epochs + epoch)
         # batch_size //= 2
 
+    if is_on_the_colabpratory:
+        saved_model_path = '/content/drive/MyDrive/auto_aug/auto_aug/saved_model/'
+    else:
+        saved_model_path = './saved_model/'
     if total_loss < 1:
-        if not os.path.exists('/content/drive/MyDrive/auto_aug/auto_aug/saved_model/%s' % dname):
-            os.makedirs('/content/drive/MyDrive/auto_aug/auto_aug/saved_model/%s' % dname)
-        torch.save(model, '/content/drive/MyDrive/auto_aug/auto_aug/saved_model/%s/%s_%f.pkl' % (dname, dname, total_loss))
+        if not os.path.exists(saved_model_path + '%s' % dname):
+            os.makedirs(saved_model_path + '%s' % dname)
+        torch.save(model,
+                   saved_model_path + '%s/%s_%f.pkl' % (dname, dname, total_loss))
 
     return total_loss
 
@@ -127,9 +131,17 @@ def test_model(model, dname, batch_size, ucrDataset):
     return acc
 
 
-def main():
+def main(is_on_the_colabpratory):
+    if is_on_the_colabpratory:
+        from drive.MyDrive.auto_aug.auto_aug.ucr_dataset import UCRDataset
+        from drive.MyDrive.auto_aug.auto_aug.utils.constants import NB_CLASSES_LIST
+        data_path = '/content/drive/MyDrive/datasets/UCRArchive_2018'
+    else:
+        from ucr_dataset import UCRDataset
+        from utils.constants import NB_CLASSES_LIST
+        data_path = 'UCRArchive_2018'
     ucrDataset = UCRDataset(
-        data_path='/content/drive/MyDrive/datasets/UCRArchive_2018',
+        data_path=data_path,
         normalize=True,
         train_ratio=1,
         num_of_dataset=2,
@@ -282,12 +294,18 @@ def main():
         for cell in CELLS:
             successes = []
             failures = []
-
-            if not os.path.exists('/content/drive/MyDrive/auto_aug/auto_aug/result/'):
-                os.makedirs('/content/drive/MyDrive/auto_aug/auto_aug/result/')
-            if not os.path.exists('/content/drive/MyDrive/auto_aug/auto_aug/result/' + base_log_name % (MODEL_NAME, cell)):
-                file = open('/content/drive/MyDrive/auto_aug/auto_aug/result/' + base_log_name % (MODEL_NAME, cell), 'w')
-                file.write('%s,%s,%s,%s,%s\n' % ('dataset_id', 'dataset_name', 'dataset_name_', 'test_accuracy', 'loss'))
+            if (is_on_the_colabpratory):
+                result_path = '/content/drive/MyDrive/auto_aug/auto_aug/result/'
+            else:
+                result_path = './result/'
+            if not os.path.exists(result_path):
+                os.makedirs(result_path)
+            if not os.path.exists(
+                    result_path + base_log_name % (MODEL_NAME, cell)):
+                file = open(result_path + base_log_name % (MODEL_NAME, cell),
+                            'w')
+                file.write(
+                    '%s,%s,%s,%s,%s\n' % ('dataset_id', 'dataset_name', 'dataset_name_', 'test_accuracy', 'loss'))
                 file.close()
             for dname in ucrDataset.getNameList():
                 did = dataset_map[dname]
@@ -299,7 +317,7 @@ def main():
 
                 print('*' * 20, "Training model for dataset %s" % (dname), '*' * 20)
 
-                loss = train_model(model, dname, epochs=1, batch_size=128, ucrDataset=ucrDataset)
+                loss = train_model(model, dname, epochs=1, batch_size=128, ucrDataset=ucrDataset, is_on_the_colabpratory=is_on_the_colabpratory)
 
                 acc = test_model(model, dname, batch_size=128, ucrDataset=ucrDataset)
 
@@ -332,4 +350,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    main(False)
