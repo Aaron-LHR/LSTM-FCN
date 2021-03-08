@@ -89,9 +89,9 @@ def train_model(model, dname, epochs, batch_size, ucrDataset, K=1):
         # batch_size //= 2
 
     if total_loss < 1:
-        if not os.path.exists('.\\saved_model\\%s' % dname):
-            os.makedirs('.\\saved_model\\%s' % dname)
-        torch.save(model, '.\\saved_model\\%s\\%s_%f.pkl' % (dname, dname, total_loss))
+        if not os.path.exists('/content/drive/MyDrive/auto_aug/saved_model/%s' % dname):
+            os.makedirs('/content/drive/MyDrive/auto_aug/saved_model/%s' % dname)
+        torch.save(model, '/content/drive/MyDrive/auto_aug/saved_model/%s/%s_%f.pkl' % (dname, dname, total_loss))
 
     return total_loss
 
@@ -283,8 +283,10 @@ def main():
             successes = []
             failures = []
 
-            if not os.path.exists(base_log_name % (MODEL_NAME, cell)):
-                file = open(base_log_name % (MODEL_NAME, cell), 'w')
+            if not os.path.exists('/content/drive/MyDrive/auto_aug/result/'):
+                os.makedirs('/content/drive/MyDrive/auto_aug/result/')
+            if not os.path.exists('/content/drive/MyDrive/auto_aug/result/' + base_log_name % (MODEL_NAME, cell)):
+                file = open('/content/drive/MyDrive/auto_aug/result/' + base_log_name % (MODEL_NAME, cell), 'w')
                 file.write('%s,%s,%s,%s,%s\n' % ('dataset_id', 'dataset_name', 'dataset_name_', 'test_accuracy', 'loss'))
                 file.close()
             for dname in ucrDataset.getNameList():
