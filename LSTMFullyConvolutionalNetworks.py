@@ -2,8 +2,8 @@ import os
 
 import torch
 
-from ucr_dataset import UCRDataset
-from utils.constants import NB_CLASSES_LIST
+from drive.MyDrive.auto_aug.auto_aug.ucr_dataset import UCRDataset
+from drive.MyDrive.auto_aug.auto_aug.utils.constants import NB_CLASSES_LIST
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -89,9 +89,9 @@ def train_model(model, dname, epochs, batch_size, ucrDataset, K=1):
         # batch_size //= 2
 
     if total_loss < 1:
-        if not os.path.exists('/content/drive/MyDrive/auto_aug/saved_model/%s' % dname):
-            os.makedirs('/content/drive/MyDrive/auto_aug/saved_model/%s' % dname)
-        torch.save(model, '/content/drive/MyDrive/auto_aug/saved_model/%s/%s_%f.pkl' % (dname, dname, total_loss))
+        if not os.path.exists('/content/drive/MyDrive/auto_aug/auto_aug/saved_model/%s' % dname):
+            os.makedirs('/content/drive/MyDrive/auto_aug/auto_aug/saved_model/%s' % dname)
+        torch.save(model, '/content/drive/MyDrive/auto_aug/auto_aug/saved_model/%s/%s_%f.pkl' % (dname, dname, total_loss))
 
     return total_loss
 
@@ -283,10 +283,10 @@ def main():
             successes = []
             failures = []
 
-            if not os.path.exists('/content/drive/MyDrive/auto_aug/result/'):
-                os.makedirs('/content/drive/MyDrive/auto_aug/result/')
-            if not os.path.exists('/content/drive/MyDrive/auto_aug/result/' + base_log_name % (MODEL_NAME, cell)):
-                file = open('/content/drive/MyDrive/auto_aug/result/' + base_log_name % (MODEL_NAME, cell), 'w')
+            if not os.path.exists('/content/drive/MyDrive/auto_aug/auto_aug/result/'):
+                os.makedirs('/content/drive/MyDrive/auto_aug/auto_aug/result/')
+            if not os.path.exists('/content/drive/MyDrive/auto_aug/auto_aug/result/' + base_log_name % (MODEL_NAME, cell)):
+                file = open('/content/drive/MyDrive/auto_aug/auto_aug/result/' + base_log_name % (MODEL_NAME, cell), 'w')
                 file.write('%s,%s,%s,%s,%s\n' % ('dataset_id', 'dataset_name', 'dataset_name_', 'test_accuracy', 'loss'))
                 file.close()
             for dname in ucrDataset.getNameList():
@@ -299,7 +299,7 @@ def main():
 
                 print('*' * 20, "Training model for dataset %s" % (dname), '*' * 20)
 
-                loss = train_model(model, dname, epochs=2000, batch_size=128, ucrDataset=ucrDataset)
+                loss = train_model(model, dname, epochs=2, batch_size=128, ucrDataset=ucrDataset)
 
                 acc = test_model(model, dname, batch_size=128, ucrDataset=ucrDataset)
 
