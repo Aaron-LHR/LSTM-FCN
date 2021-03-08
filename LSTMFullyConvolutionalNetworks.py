@@ -3,7 +3,7 @@ import os
 import torch
 
 from ucr_dataset import UCRDataset
-from utils.constants import MAX_SEQUENCE_LENGTH_LIST, NB_CLASSES_LIST
+from utils.constants import NB_CLASSES_LIST
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -129,7 +129,7 @@ def test_model(model, dname, batch_size, ucrDataset):
 
 def main():
     ucrDataset = UCRDataset(
-        data_path='UCRArchive_2018',
+        data_path='/content/drive/MyDrive/datasets/UCRArchive_2018',
         normalize=True,
         train_ratio=1,
         num_of_dataset=2,
