@@ -516,3 +516,7 @@ dataset_id,dataset_name,dataset_name_,test_accuracy
 8,Beef,Beef,0.800000
 0,Adiac,Adiac,0.030691,14.358422
 8,Beef,Beef,0.266667,1.638334
+0,Adiac,Adiac,0.795396,0.716897
+8,Beef,Beef,0.800000,0.000303
+0,Adiac,Adiac,0.867008,0.229568
+8,Beef,Beef,0.466667,0.190504

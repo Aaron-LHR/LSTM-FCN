@@ -1,8 +1,7 @@
+import json
 import os
-
+import numpy as np
 import torch
-
-
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -59,7 +58,7 @@ class LSTM_FCN(torch.nn.Module):
         return label
 
 
-def train_model(model, dname, epochs, batch_size, ucrDataset, is_on_the_colabpratory, K=1):
+def train_model(model, dname, epochs, batch_size, ucrDataset, K=1):
     model.to(device)
     model.train()
     loss_fn = torch.nn.CrossEntropyLoss()
@@ -86,17 +85,6 @@ def train_model(model, dname, epochs, batch_size, ucrDataset, is_on_the_colabpra
 
             print(" train loss:", total_loss, "epoch:", k * epochs + epoch)
         # batch_size //= 2
-
-    if is_on_the_colabpratory:
-        saved_model_path = '/content/drive/MyDrive/auto_aug/auto_aug/saved_model/'
-    else:
-        saved_model_path = './saved_model/'
-    if total_loss < 1:
-        if not os.path.exists(saved_model_path + '%s' % dname):
-            os.makedirs(saved_model_path + '%s' % dname)
-        torch.save(model,
-                   saved_model_path + '%s/%s_%f.pkl' % (dname, dname, total_loss))
-
     return total_loss
 
 
@@ -126,12 +114,12 @@ def test_model(model, dname, batch_size, ucrDataset):
                 correct += (output == y).float()
             # print(correct)
     # print(correct)
-    acc = correct.sum() / test_length
+    acc = (correct.sum() / test_length).item()
     print(' acc:', acc)
     return acc
 
 
-def main(is_on_the_colabpratory):
+def main(is_on_the_colabpratory, epochs=2000, batch_size=128, cell=64, is_aug=False, num_of_dataset=200):
     if is_on_the_colabpratory:
         from drive.MyDrive.auto_aug.auto_aug.ucr_dataset import UCRDataset
         from drive.MyDrive.auto_aug.auto_aug.utils.constants import NB_CLASSES_LIST
@@ -144,8 +132,8 @@ def main(is_on_the_colabpratory):
         data_path=data_path,
         normalize=True,
         train_ratio=1,
-        num_of_dataset=2,
-        data_name_list=['Adiac', 'Beef']
+        num_of_dataset=num_of_dataset,
+        data_name_list=[],
     )
     dataset_map = {'Adiac': 0,
                    'ArrowHead': 1,
@@ -287,67 +275,86 @@ def main(is_on_the_colabpratory):
         # ('alstmfcn', generate_alstmfcn),
     ]
 
-    # Number of cells
-    CELLS = [64]
-
     for model_id, (MODEL_NAME, model_fn) in enumerate(MODELS):
-        for cell in CELLS:
-            successes = []
-            failures = []
-            if (is_on_the_colabpratory):
-                result_path = '/content/drive/MyDrive/auto_aug/auto_aug/result/'
-            else:
-                result_path = './result/'
-            if not os.path.exists(result_path):
-                os.makedirs(result_path)
-            if not os.path.exists(
-                    result_path + base_log_name % (MODEL_NAME, cell)):
-                file = open(result_path + base_log_name % (MODEL_NAME, cell),
-                            'w')
-                file.write(
-                    '%s,%s,%s,%s,%s\n' % ('dataset_id', 'dataset_name', 'dataset_name_', 'test_accuracy', 'loss'))
-                file.close()
-            for dname in ucrDataset.getNameList():
-                did = dataset_map[dname]
-                NB_CLASS = NB_CLASSES_LIST[did]
+        successes = []
+        failures = []
+        if (is_on_the_colabpratory):
+            result_path = '/content/drive/MyDrive/auto_aug/auto_aug/result/'
+            saved_model_path = '/content/drive/MyDrive/auto_aug/auto_aug/saved_model/'
+        else:
+            result_path = './result/'
+            saved_model_path = './saved_model/'
+        if not os.path.exists(result_path):
+            os.makedirs(result_path)
+        if not os.path.exists(
+                result_path + base_log_name % (MODEL_NAME, cell)):
+            file = open(result_path + base_log_name % (MODEL_NAME, cell),
+                        'w')
+            file.write(
+                '%s,%s,%s,%s,%s\n' % ('dataset_id', 'dataset_name', 'dataset_name_', 'test_accuracy', 'loss'))
+            file.close()
+        for dname in ucrDataset.getNameList():
+            did = dataset_map[dname]
+            NB_CLASS = NB_CLASSES_LIST[did]
 
-                file = open(base_log_name % (MODEL_NAME, cell), 'a+')
+            file = open(result_path + base_log_name % (MODEL_NAME, cell), 'a+')
 
-                model = model_fn(1, 128, 256, 128, 8, 5, 3, cell, NB_CLASS)
+            model = model_fn(1, 128, 256, 128, 8, 5, 3, cell, NB_CLASS)
 
-                print('*' * 20, "Training model for dataset %s" % (dname), '*' * 20)
+            print('*' * 20, "Training model for dataset %s" % (dname), '*' * 20)
 
-                loss = train_model(model, dname, epochs=1, batch_size=128, ucrDataset=ucrDataset, is_on_the_colabpratory=is_on_the_colabpratory)
+            loss = train_model(model, dname, epochs=epochs, batch_size=batch_size, ucrDataset=ucrDataset)
 
-                acc = test_model(model, dname, batch_size=128, ucrDataset=ucrDataset)
+            acc = test_model(model, dname, batch_size=batch_size, ucrDataset=ucrDataset)
 
-                s = "%d,%s,%s,%0.6f,%0.6f\n" % (did, dname, dname, acc, loss)
+            try:
+                with open("hyperparameters_of_model.json", mode="r", encoding="utf-8") as f:
+                    hyperparameters_of_model = json.loads(f.read())
+                # hyperparameters_of_model = np.load('hyperparameters_of_model.npy', allow_pickle=True).item()
+            except:
+                hyperparameters_of_model = {}
 
-                file.write(s)
-                file.flush()
+            if (not is_aug and dname not in hyperparameters_of_model.keys() or acc > hyperparameters_of_model[dname]['acc']):
+                hyperparameter = {}
+                hyperparameter['acc'] = acc
+                hyperparameter['loss'] = loss
+                hyperparameter['batch_size'] = batch_size
+                hyperparameter['epochs'] = epochs
+                hyperparameter['cell'] = cell
+                hyperparameters_of_model[dname] = hyperparameter
+                # np.save('hyperparameters_of_model.npy', hyperparameters_of_model)
+                with open("hyperparameters_of_model.json", mode="w", encoding="utf-8") as f:
+                    f.write(json.dumps(hyperparameters_of_model))
+                if not os.path.exists(saved_model_path + '%s' % dname):
+                    os.makedirs(saved_model_path + '%s' % dname)
+                torch.save(model, saved_model_path + '%s/%s_%f.pkl' % (dname, dname, acc))
+            s = "%d,%s,%s,%0.6f,%0.6f\n" % (did, dname, dname, acc, loss)
 
-                successes.append(s)
+            file.write(s)
+            file.flush()
 
-                file.close()
-                del model
+            successes.append(s)
 
-            print('\n\n')
-            print('*' * 20, "Successes", '*' * 20)
-            print()
+            file.close()
+            del model
 
-            for line in successes:
-                print(line)
+        print('\n\n')
+        print('*' * 20, "Successes", '*' * 20)
+        print()
 
-            print('\n\n')
-            print('*' * 20, "Failures", '*' * 20)
-            print()
+        for line in successes:
+            print(line)
 
-            for line in failures:
-                print(line)
+        print('\n\n')
+        print('*' * 20, "Failures", '*' * 20)
+        print()
 
-            if hasattr(torch.cuda, 'empty_cache'):
-                torch.cuda.empty_cache()
+        for line in failures:
+            print(line)
+
+        if hasattr(torch.cuda, 'empty_cache'):
+            torch.cuda.empty_cache()
 
 
 if __name__ == '__main__':
-    main(False)
+    main(is_on_the_colabpratory=False, epochs=2000, batch_size=32, cell=64, is_aug=False, num_of_dataset=200)
