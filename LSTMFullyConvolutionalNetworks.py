@@ -299,7 +299,7 @@ def main():
 
                 print('*' * 20, "Training model for dataset %s" % (dname), '*' * 20)
 
-                loss = train_model(model, dname, epochs=2, batch_size=128, ucrDataset=ucrDataset)
+                loss = train_model(model, dname, epochs=1, batch_size=128, ucrDataset=ucrDataset)
 
                 acc = test_model(model, dname, batch_size=128, ucrDataset=ucrDataset)
 
