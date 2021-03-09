@@ -284,20 +284,20 @@ def main(is_on_the_colabpratory, epochs=2000, batch_size=128, cell=64, is_aug=Fa
         else:
             result_path = './result/'
             saved_model_path = './saved_model/'
-        if not os.path.exists(result_path):
-            os.makedirs(result_path)
-        if not os.path.exists(
-                result_path + base_log_name % (MODEL_NAME, cell)):
-            file = open(result_path + base_log_name % (MODEL_NAME, cell),
-                        'w')
-            file.write(
-                '%s,%s,%s,%s,%s\n' % ('dataset_id', 'dataset_name', 'dataset_name_', 'test_accuracy', 'loss'))
-            file.close()
+        # if not os.path.exists(result_path):
+        #     os.makedirs(result_path)
+        # if not os.path.exists(
+        #         result_path + base_log_name % (MODEL_NAME, cell)):
+        #     file = open(result_path + base_log_name % (MODEL_NAME, cell),
+        #                 'w')
+        #     file.write(
+        #         '%s,%s,%s,%s,%s\n' % ('dataset_id', 'dataset_name', 'dataset_name_', 'test_accuracy', 'loss'))
+        #     file.close()
         for dname in ucrDataset.getNameList():
             did = dataset_map[dname]
             NB_CLASS = NB_CLASSES_LIST[did]
 
-            file = open(result_path + base_log_name % (MODEL_NAME, cell), 'a+')
+            # file = open(result_path + base_log_name % (MODEL_NAME, cell), 'a+')
 
             model = model_fn(1, 128, 256, 128, 8, 5, 3, cell, NB_CLASS)
 
@@ -330,12 +330,12 @@ def main(is_on_the_colabpratory, epochs=2000, batch_size=128, cell=64, is_aug=Fa
                 torch.save(model, saved_model_path + '%s/%s_%f.pkl' % (dname, dname, acc))
             s = "%d,%s,%s,%0.6f,%0.6f\n" % (did, dname, dname, acc, loss)
 
-            file.write(s)
-            file.flush()
+            # file.write(s)
+            # file.flush()
 
             successes.append(s)
 
-            file.close()
+            # file.close()
             del model
 
         print('\n\n')
