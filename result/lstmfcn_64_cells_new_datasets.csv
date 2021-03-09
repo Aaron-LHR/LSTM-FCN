@@ -1,0 +1,16 @@
+dataset_id,dataset_name,dataset_name_,test_accuracy,loss
+85,ACSF1,ACSF1,0.320000,7.975119
+0,Adiac,Adiac,0.081841,45.451937
+86,AllGestureWiimoteX,AllGestureWiimoteX,0.180000,20.681954
+87,AllGestureWiimoteY,AllGestureWiimoteY,0.210000,21.307033
+85,ACSF1,ACSF1,0.740000,0.766768
+0,Adiac,Adiac,0.808184,0.565534
+86,AllGestureWiimoteX,AllGestureWiimoteX,0.670000,0.036132
+85,ACSF1,ACSF1,0.100000,8.795369
+85,ACSF1,ACSF1,0.860000,0.976376
+0,Adiac,Adiac,0.836317,0.782736
+86,AllGestureWiimoteX,AllGestureWiimoteX,0.684286,0.015869
+87,AllGestureWiimoteY,AllGestureWiimoteY,0.597143,0.256595
+88,AllGestureWiimoteZ,AllGestureWiimoteZ,0.712857,0.013872
+1,ArrowHead,ArrowHead,0.777143,0.018209
+8,Beef,Beef,0.766667,0.001253

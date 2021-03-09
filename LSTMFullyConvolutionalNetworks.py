@@ -119,7 +119,7 @@ def test_model(model, dname, batch_size, ucrDataset):
     return acc
 
 
-def main(is_on_the_colabpratory, epochs=2000, batch_size=128, cell=64, is_aug=False, num_of_dataset=200):
+def main(is_on_the_colabpratory, epochs=2000, batch_size=128, cell=64, is_aug=False, num_of_dataset=200, data_name_list=[]):
     if is_on_the_colabpratory:
         from drive.MyDrive.auto_aug.auto_aug.ucr_dataset import UCRDataset
         from drive.MyDrive.auto_aug.auto_aug.utils.constants import NB_CLASSES_LIST
@@ -133,7 +133,7 @@ def main(is_on_the_colabpratory, epochs=2000, batch_size=128, cell=64, is_aug=Fa
         normalize=True,
         train_ratio=1,
         num_of_dataset=num_of_dataset,
-        data_name_list=[],
+        data_name_list=data_name_list,
     )
     dataset_map = {'Adiac': 0,
                    'ArrowHead': 1,
@@ -357,4 +357,4 @@ def main(is_on_the_colabpratory, epochs=2000, batch_size=128, cell=64, is_aug=Fa
 
 
 if __name__ == '__main__':
-    main(is_on_the_colabpratory=False, epochs=2000, batch_size=32, cell=64, is_aug=False, num_of_dataset=200)
+    main(is_on_the_colabpratory=False, epochs=2000, batch_size=32, cell=64, is_aug=False, num_of_dataset=200, data_name_list=[])
