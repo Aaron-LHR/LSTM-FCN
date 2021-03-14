@@ -119,14 +119,15 @@ def test_model(model, dname, batch_size, ucrDataset):
     return acc
 
 
-def main(is_on_the_colabpratory, epochs=2000, batch_size=128, cell=64, is_aug=False, num_of_dataset=200, data_name_list=[]):
+def main(is_on_the_colabpratory, epochs=2000, batch_size=128, cell=64, is_aug=False, num_of_dataset=200,
+         data_name_list=[]):
     if is_on_the_colabpratory:
         from drive.MyDrive.auto_aug.auto_aug.ucr_dataset import UCRDataset
-        from drive.MyDrive.auto_aug.auto_aug.utils.constants import NB_CLASSES_LIST
+        from drive.MyDrive.auto_aug.auto_aug.utils.constants import NB_CLASSES_LIST, MAX_SEQUENCE_LENGTH_LIST
         data_path = '/content/drive/MyDrive/datasets/UCRArchive_2018'
     else:
         from ucr_dataset import UCRDataset
-        from utils.constants import NB_CLASSES_LIST
+        from utils.constants import NB_CLASSES_LIST, MAX_SEQUENCE_LENGTH_LIST
         data_path = 'UCRArchive_2018'
     ucrDataset = UCRDataset(
         data_path=data_path,
@@ -294,49 +295,58 @@ def main(is_on_the_colabpratory, epochs=2000, batch_size=128, cell=64, is_aug=Fa
         #         '%s,%s,%s,%s,%s\n' % ('dataset_id', 'dataset_name', 'dataset_name_', 'test_accuracy', 'loss'))
         #     file.close()
         for dname in ucrDataset.getNameList():
-            did = dataset_map[dname]
-            NB_CLASS = NB_CLASSES_LIST[did]
-
-            # file = open(result_path + base_log_name % (MODEL_NAME, cell), 'a+')
-
-            model = model_fn(1, 128, 256, 128, 8, 5, 3, cell, NB_CLASS)
-
-            print('*' * 20, "Training model for dataset %s" % (dname), '*' * 20)
-
-            loss = train_model(model, dname, epochs=epochs, batch_size=batch_size, ucrDataset=ucrDataset)
-
-            acc = test_model(model, dname, batch_size=batch_size, ucrDataset=ucrDataset)
-
             try:
-                with open("hyperparameters_of_model.json", mode="r", encoding="utf-8") as f:
-                    hyperparameters_of_model = json.loads(f.read())
-                # hyperparameters_of_model = np.load('hyperparameters_of_model.npy', allow_pickle=True).item()
+                did = dataset_map[dname]
+                NB_CLASS = NB_CLASSES_LIST[did]
+                if not is_on_the_colabpratory and MAX_SEQUENCE_LENGTH_LIST[did] > 400:
+                    continue
+
+                if is_on_the_colabpratory and MAX_SEQUENCE_LENGTH_LIST[did] <= 400:
+                    continue
+
+                # file = open(result_path + base_log_name % (MODEL_NAME, cell), 'a+')
+
+                model = model_fn(1, 128, 256, 128, 8, 5, 3, cell, NB_CLASS)
+
+                print('*' * 20, "Training model for dataset %s" % (dname), '*' * 20)
+
+                loss = train_model(model, dname, epochs=epochs, batch_size=batch_size, ucrDataset=ucrDataset)
+
+                acc = test_model(model, dname, batch_size=batch_size, ucrDataset=ucrDataset)
+
+                try:
+                    with open("hyperparameters_of_model.json", mode="r", encoding="utf-8") as f:
+                        hyperparameters_of_model = json.loads(f.read())
+                    # hyperparameters_of_model = np.load('hyperparameters_of_model.npy', allow_pickle=True).item()
+                except:
+                    hyperparameters_of_model = {}
+
+                if (not is_aug and dname not in hyperparameters_of_model.keys() or acc >
+                        hyperparameters_of_model[dname]['acc']):
+                    hyperparameter = {}
+                    hyperparameter['acc'] = acc
+                    hyperparameter['loss'] = loss
+                    hyperparameter['batch_size'] = batch_size
+                    hyperparameter['epochs'] = epochs
+                    hyperparameter['cell'] = cell
+                    hyperparameters_of_model[dname] = hyperparameter
+                    # np.save('hyperparameters_of_model.npy', hyperparameters_of_model)
+                    with open("hyperparameters_of_model.json", mode="w", encoding="utf-8") as f:
+                        f.write(json.dumps(hyperparameters_of_model))
+                    if not os.path.exists(saved_model_path + '%s' % dname):
+                        os.makedirs(saved_model_path + '%s' % dname)
+                    torch.save(model, saved_model_path + '%s/%s_acc%f_e%d_b%d_c%d.pkl' % (dname, dname, acc, epochs, batch_size, cell))
+                s = "%d,%s,%s,%0.6f,%0.6f\n" % (did, dname, dname, acc, loss)
+
+                # file.write(s)
+                # file.flush()
+
+                successes.append(s)
+
+                # file.close()
+                del model
             except:
-                hyperparameters_of_model = {}
-
-            if (not is_aug and dname not in hyperparameters_of_model.keys() or acc > hyperparameters_of_model[dname]['acc']):
-                hyperparameter = {}
-                hyperparameter['acc'] = acc
-                hyperparameter['loss'] = loss
-                hyperparameter['batch_size'] = batch_size
-                hyperparameter['epochs'] = epochs
-                hyperparameter['cell'] = cell
-                hyperparameters_of_model[dname] = hyperparameter
-                # np.save('hyperparameters_of_model.npy', hyperparameters_of_model)
-                with open("hyperparameters_of_model.json", mode="w", encoding="utf-8") as f:
-                    f.write(json.dumps(hyperparameters_of_model))
-                if not os.path.exists(saved_model_path + '%s' % dname):
-                    os.makedirs(saved_model_path + '%s' % dname)
-                torch.save(model, saved_model_path + '%s/%s_%f.pkl' % (dname, dname, acc))
-            s = "%d,%s,%s,%0.6f,%0.6f\n" % (did, dname, dname, acc, loss)
-
-            # file.write(s)
-            # file.flush()
-
-            successes.append(s)
-
-            # file.close()
-            del model
+                pass
 
         print('\n\n')
         print('*' * 20, "Successes", '*' * 20)
@@ -357,4 +367,5 @@ def main(is_on_the_colabpratory, epochs=2000, batch_size=128, cell=64, is_aug=Fa
 
 
 if __name__ == '__main__':
-    main(is_on_the_colabpratory=False, epochs=2000, batch_size=32, cell=64, is_aug=False, num_of_dataset=200, data_name_list=[])
+    main(is_on_the_colabpratory=False, epochs=2000, batch_size=128, cell=64, is_aug=False, num_of_dataset=200,
+         data_name_list=[])
