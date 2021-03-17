@@ -125,11 +125,12 @@ def main(is_on_the_colabpratory, epochs=2000, batch_size=128, cell=64, is_aug=Fa
          data_name_list=[], patience=100):
     if is_on_the_colabpratory:
         from drive.MyDrive.auto_aug.auto_aug.ucr_dataset import UCRDataset
-        from drive.MyDrive.auto_aug.auto_aug.utils.constants import NB_CLASSES_LIST, MAX_SEQUENCE_LENGTH_LIST
+        from drive.MyDrive.auto_aug.auto_aug.utils.constants import NB_CLASSES_LIST, MAX_SEQUENCE_LENGTH_LIST, \
+            dataset_map
         data_path = '/content/drive/MyDrive/datasets/UCRArchive_2018'
     else:
         from ucr_dataset import UCRDataset
-        from utils.constants import NB_CLASSES_LIST, MAX_SEQUENCE_LENGTH_LIST
+        from utils.constants import NB_CLASSES_LIST, MAX_SEQUENCE_LENGTH_LIST, dataset_map
         data_path = 'UCRArchive_2018'
     ucrDataset = UCRDataset(
         data_path=data_path,
@@ -137,136 +138,8 @@ def main(is_on_the_colabpratory, epochs=2000, batch_size=128, cell=64, is_aug=Fa
         train_ratio=1,
         num_of_dataset=num_of_dataset,
         data_name_list=data_name_list,
+        is_on_the_colabpratory=is_on_the_colabpratory
     )
-    dataset_map = {'Adiac': 0,
-                   'ArrowHead': 1,
-                   'ChlorineConcentration': 2,
-                   'InsectWingbeatSound': 3,
-                   'Lightning7': 4,
-                   'Wine': 5,
-                   'WordSynonyms': 6,
-                   # '50words': 7,
-                   'Beef': 8,
-                   'DistalPhalanxOutlineAgeGroup': 9,
-                   'DistalPhalanxOutlineCorrect': 10,
-                   'DistalPhalanxTW': 11,
-                   'ECG200': 12,
-                   'ECGFiveDays': 13,
-                   'BeetleFly': 14,
-                   'BirdChicken': 15,
-                   'ItalyPowerDemand': 16,
-                   'SonyAIBORobotSurface1': 17,
-                   'SonyAIBORobotSurface2': 18,
-                   'MiddlePhalanxOutlineAgeGroup': 19,
-                   'MiddlePhalanxOutlineCorrect': 20,
-                   'MiddlePhalanxTW': 21,
-                   'ProximalPhalanxOutlineAgeGroup': 22,
-                   'ProximalPhalanxOutlineCorrect': 23,
-                   'ProximalPhalanxTW': 24,
-                   'MoteStrain': 25,
-                   'MedicalImages': 26,
-                   'Strawberry': 27,
-                   'ToeSegmentation1': 28,
-                   'Coffee': 29,
-                   'CricketX': 30,
-                   'CricketY': 31,
-                   'CricketZ': 32,
-                   'UWaveGestureLibraryX': 33,
-                   'UWaveGestureLibraryY': 34,
-                   'UWaveGestureLibraryZ': 35,
-                   'ToeSegmentation2': 36,
-                   'DiatomSizeReduction': 37,
-                   'Car': 38,
-                   'CBF': 39,
-                   'CinCECGTorso': 40,
-                   'Computers': 41,
-                   'Earthquakes': 42,
-                   'ECG5000': 43,
-                   'ElectricDevices': 44,
-                   'FaceAll': 45,
-                   'FaceFour': 46,
-                   'FacesUCR': 47,
-                   'Fish': 48,
-                   'FordA': 49,
-                   'FordB': 50,
-                   'GunPoint': 51,
-                   'Ham': 52,
-                   'HandOutlines': 53,
-                   'Haptics': 54,
-                   'Herring': 55,
-                   'InlineSkate': 56,
-                   'LargeKitchenAppliances': 57,
-                   'Lightning2': 58,
-                   'Mallat': 59,
-                   'Meat': 60,
-                   'NonInvasiveFetalECGThorax1': 61,
-                   'NonInvasiveFetalECGThorax2': 62,
-                   'OliveOil': 63,
-                   'OSULeaf': 64,
-                   'PhalangesOutlinesCorrect': 65,
-                   'Phoneme': 66,
-                   'Plane': 67,
-                   'RefrigerationDevices': 68,
-                   'ScreenType': 69,
-                   'ShapeletSim': 70,
-                   'ShapesAll': 71,
-                   'SmallKitchenAppliances': 72,
-                   'StarLightCurves': 73,
-                   'SwedishLeaf': 74,
-                   'Symbols': 75,
-                   'SyntheticControl': 76,
-                   'Trace': 77,
-                   # 'Patterns': 78,
-                   'TwoLeadECG': 79,
-                   'UWaveGestureLibraryAll': 80,
-                   'Wafer': 81,
-                   'Worms': 82,
-                   'WormsTwoClass': 83,
-                   'Yoga': 84,
-                   'ACSF1': 85,
-                   'AllGestureWiimoteX': 86,
-                   'AllGestureWiimoteY': 87,
-                   'AllGestureWiimoteZ': 88,
-                   'BME': 89,
-                   'Chinatown': 90,
-                   'Crop': 91,
-                   'DodgerLoopDay': 92,
-                   'DodgerLoopGame': 93,
-                   'DodgerLoopWeekend': 94,
-                   'EOGHorizontalSignal': 95,
-                   'EOGVerticalSignal': 96,
-                   'EthanolLevel': 97,
-                   'FreezerRegularTrain': 98,
-                   'FreezerSmallTrain': 99,
-                   'Fungi': 100,
-                   'GestureMidAirD1': 101,
-                   'GestureMidAirD2': 102,
-                   'GestureMidAirD3': 103,
-                   'GesturePebbleZ1': 104,
-                   'GesturePebbleZ2': 105,
-                   'GunPointAgeSpan': 106,
-                   'GunPointMaleVersusFemale': 107,
-                   'GunPointOldVersusYoung': 108,
-                   'HouseTwenty': 109,
-                   'InsectEPGRegularTrain': 110,
-                   'InsectEPGSmallTrain': 111,
-                   'MelbournePedestrian': 112,
-                   'MixedShapesRegularTrain': 113,
-                   # 'MixedShapesSmallTrain': 114,
-                   'PickupGestureWiimoteZ': 115,
-                   'PigAirwayPressure': 116,
-                   'PigArtPressure': 117,
-                   'PigCVP': 118,
-                   'PLAID': 119,
-                   'PowerCons': 120,
-                   'Rock': 121,
-                   'SemgHandGenderCh2': 122,
-                   'SemgHandMovementCh2': 123,
-                   'SemgHandSubjectCh2': 124,
-                   'ShakeGestureWiimoteZ': 125,
-                   'SmoothSubspace': 126,
-                   'UMD': 127
-                   }
 
     print("Num datasets : ", len(dataset_map))
     print()
@@ -300,11 +173,11 @@ def main(is_on_the_colabpratory, epochs=2000, batch_size=128, cell=64, is_aug=Fa
             try:
                 did = dataset_map[dname]
                 NB_CLASS = NB_CLASSES_LIST[did]
-                if not is_on_the_colabpratory and MAX_SEQUENCE_LENGTH_LIST[did] > 400:
-                    continue
-
-                if is_on_the_colabpratory and MAX_SEQUENCE_LENGTH_LIST[did] <= 400:
-                    continue
+                # if not is_on_the_colabpratory and MAX_SEQUENCE_LENGTH_LIST[did] > 400:
+                #     continue
+                #
+                # if is_on_the_colabpratory and MAX_SEQUENCE_LENGTH_LIST[did] <= 400:
+                #     continue
 
                 # file = open(result_path + base_log_name % (MODEL_NAME, cell), 'a+')
 
@@ -372,4 +245,4 @@ def main(is_on_the_colabpratory, epochs=2000, batch_size=128, cell=64, is_aug=Fa
 
 if __name__ == '__main__':
     main(is_on_the_colabpratory=False, epochs=2000, batch_size=128, cell=64, is_aug=False, num_of_dataset=200,
-         data_name_list=[], patience=10)
+         data_name_list=[], patience=100)

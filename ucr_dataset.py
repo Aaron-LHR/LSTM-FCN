@@ -7,11 +7,18 @@ from torch.utils.data import Dataset
 
 
 class UCRDataset():
-    def __init__(self, data_path: str, train_ratio: float, normalize: bool, num_of_dataset=200, data_name_list=[]):
+    def __init__(self, data_path: str, train_ratio: float, normalize: bool, num_of_dataset=200, data_name_list=[], is_on_the_colabpratory=False):
         self.dict = {}
         cur_num_of_dataset = 0
         for dir in os.listdir(data_path):
-            if os.path.isdir(os.path.join(data_path, dir)) and (len(data_name_list) == 0 or dir in data_name_list):
+            if is_on_the_colabpratory:
+                from drive.MyDrive.auto_aug.auto_aug.utils.constants import MAX_SEQUENCE_LENGTH_LIST, dataset_map
+                data_path = '/content/drive/MyDrive/datasets/UCRArchive_2018'
+            else:
+                from utils.constants import MAX_SEQUENCE_LENGTH_LIST, dataset_map
+                data_path = 'UCRArchive_2018'
+            did = dataset_map[dir]
+            if os.path.isdir(os.path.join(data_path, dir)) and (len(data_name_list) == 0 or dir in data_name_list) and ((is_on_the_colabpratory and MAX_SEQUENCE_LENGTH_LIST[did] > 400) or (not is_on_the_colabpratory and MAX_SEQUENCE_LENGTH_LIST[did] <= 400)):
                 train_and_valid_data = self.__sortByCategory(
                     np.loadtxt(os.path.join(data_path, dir, dir + '_TRAIN.tsv'), delimiter='\t', dtype=np.float32))
                 test_data = self.__sortByCategory(
