@@ -338,8 +338,8 @@ def main(is_on_the_colabpratory, epochs=2000, batch_size=128, cell=64, is_aug=Fa
                         f.write(json.dumps(hyperparameters_of_model))
                     if not os.path.exists(saved_model_path + '%s' % dname):
                         os.makedirs(saved_model_path + '%s' % dname)
-                    torch.save(model, saved_model_path + '%s/%s_acc%f_e%d_b%d_c%d.pkl' % (
-                    dname, dname, acc, epochs, batch_size, cell))
+                    torch.save(model, saved_model_path + '%s/%s_acc%f_e%d_b%d_c%d_p%d.pkl' % (
+                        dname, dname, acc, epochs, batch_size, cell, patience))
                 s = "%d,%s,%s,%0.6f,%0.6f\n" % (did, dname, dname, acc, loss)
 
                 # file.write(s)
