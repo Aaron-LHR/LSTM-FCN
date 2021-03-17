@@ -58,12 +58,12 @@ class LSTM_FCN(torch.nn.Module):
         return label
 
 
-def train_model(model, dname, epochs, batch_size, ucrDataset, K=1):
+def train_model(model, dname, epochs, batch_size, ucrDataset, patience, K=1):
     model.to(device)
     model.train()
     loss_fn = torch.nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
-    torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=1 / pow(2, 1 / 3), patience=100,
+    torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=1 / pow(2, 1 / 3), patience=patience,
                                                verbose=True,
                                                threshold=0.0001, threshold_mode='rel', cooldown=0, min_lr=0.0001)
     for k in range(K):
@@ -120,7 +120,7 @@ def test_model(model, dname, batch_size, ucrDataset):
 
 
 def main(is_on_the_colabpratory, epochs=2000, batch_size=128, cell=64, is_aug=False, num_of_dataset=200,
-         data_name_list=[]):
+         data_name_list=[], patience=100):
     if is_on_the_colabpratory:
         from drive.MyDrive.auto_aug.auto_aug.ucr_dataset import UCRDataset
         from drive.MyDrive.auto_aug.auto_aug.utils.constants import NB_CLASSES_LIST, MAX_SEQUENCE_LENGTH_LIST
@@ -310,7 +310,7 @@ def main(is_on_the_colabpratory, epochs=2000, batch_size=128, cell=64, is_aug=Fa
 
                 print('*' * 20, "Training model for dataset %s" % (dname), '*' * 20)
 
-                loss = train_model(model, dname, epochs=epochs, batch_size=batch_size, ucrDataset=ucrDataset)
+                loss = train_model(model, dname, epochs=epochs, batch_size=batch_size, ucrDataset=ucrDataset, patience=patience)
 
                 acc = test_model(model, dname, batch_size=batch_size, ucrDataset=ucrDataset)
 
@@ -368,4 +368,4 @@ def main(is_on_the_colabpratory, epochs=2000, batch_size=128, cell=64, is_aug=Fa
 
 if __name__ == '__main__':
     main(is_on_the_colabpratory=False, epochs=2000, batch_size=128, cell=64, is_aug=False, num_of_dataset=200,
-         data_name_list=[])
+         data_name_list=[], patience=10)
