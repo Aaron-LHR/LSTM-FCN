@@ -63,9 +63,11 @@ def train_model(model, dname, epochs, batch_size, ucrDataset, patience, K=1):
     model.train()
     loss_fn = torch.nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
-    torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=1 / pow(2, 1 / 3), patience=patience,
-                                               verbose=True,
-                                               threshold=0.0001, threshold_mode='rel', cooldown=0, min_lr=0.0001)
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=1 / pow(2, 1 / 3),
+                                                           patience=patience,
+                                                           verbose=True,
+                                                           threshold=0.0001, threshold_mode='rel', cooldown=0,
+                                                           min_lr=0.0001)
     for k in range(K):
         dataloader = torch.utils.data.DataLoader(ucrDataset.getDatasetByName(dname)['train'], batch_size=batch_size,
                                                  shuffle=True)
@@ -82,7 +84,7 @@ def train_model(model, dname, epochs, batch_size, ucrDataset, patience, K=1):
                 optimizer.step()
 
                 total_loss += loss.item()
-
+            scheduler.step(total_loss)
             print(" train loss:", total_loss, "epoch:", k * epochs + epoch)
         # batch_size //= 2
     return total_loss
@@ -310,7 +312,8 @@ def main(is_on_the_colabpratory, epochs=2000, batch_size=128, cell=64, is_aug=Fa
 
                 print('*' * 20, "Training model for dataset %s" % (dname), '*' * 20)
 
-                loss = train_model(model, dname, epochs=epochs, batch_size=batch_size, ucrDataset=ucrDataset, patience=patience)
+                loss = train_model(model, dname, epochs=epochs, batch_size=batch_size, ucrDataset=ucrDataset,
+                                   patience=patience)
 
                 acc = test_model(model, dname, batch_size=batch_size, ucrDataset=ucrDataset)
 
@@ -335,7 +338,8 @@ def main(is_on_the_colabpratory, epochs=2000, batch_size=128, cell=64, is_aug=Fa
                         f.write(json.dumps(hyperparameters_of_model))
                     if not os.path.exists(saved_model_path + '%s' % dname):
                         os.makedirs(saved_model_path + '%s' % dname)
-                    torch.save(model, saved_model_path + '%s/%s_acc%f_e%d_b%d_c%d.pkl' % (dname, dname, acc, epochs, batch_size, cell))
+                    torch.save(model, saved_model_path + '%s/%s_acc%f_e%d_b%d_c%d.pkl' % (
+                    dname, dname, acc, epochs, batch_size, cell))
                 s = "%d,%s,%s,%0.6f,%0.6f\n" % (did, dname, dname, acc, loss)
 
                 # file.write(s)
