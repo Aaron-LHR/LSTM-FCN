@@ -117,7 +117,7 @@ def test_model(model, dname, batch_size, ucrDataset):
             # print(correct)
     # print(correct)
     acc = (correct.sum() / test_length).item()
-    print(' acc:', acc)
+    print(dname + ' acc:', acc)
     return acc
 
 
