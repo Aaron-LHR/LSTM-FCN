@@ -2,6 +2,7 @@ import json
 import os
 import numpy as np
 import torch
+from tensorboardX import SummaryWriter
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -59,6 +60,7 @@ class LSTM_FCN(torch.nn.Module):
 
 
 def train_model(model, dname, epochs, batch_size, ucrDataset, patience, K=1):
+    writer = SummaryWriter(comment="-" + dname)
     model.to(device)
     model.train()
     loss_fn = torch.nn.CrossEntropyLoss()
@@ -86,6 +88,11 @@ def train_model(model, dname, epochs, batch_size, ucrDataset, patience, K=1):
                 total_loss += loss.item()
             scheduler.step(total_loss)
             print(" train loss:", total_loss, "epoch:", k * epochs + epoch)
+
+            acc = test_model(model, dname, batch_size=batch_size, ucrDataset=ucrDataset)
+            writer.add_scalar('loss', total_loss, global_step=k * epochs + epoch)
+            writer.add_scalar('acc', acc, global_step=k * epochs + epoch)
+            model.train()
         # batch_size //= 2
     return total_loss
 
