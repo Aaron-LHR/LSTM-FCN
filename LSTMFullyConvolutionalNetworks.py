@@ -204,8 +204,8 @@ def main(is_on_the_colabpratory, epochs=2000, batch_size=128, cell=64, is_aug=Fa
                 except:
                     hyperparameters_of_model = {}
 
-                if (not is_aug and dname not in hyperparameters_of_model.keys() or acc >
-                        hyperparameters_of_model[dname]['acc']):
+                if (not is_aug and (dname not in hyperparameters_of_model.keys() or acc >
+                                    hyperparameters_of_model[dname]['acc'])):
                     hyperparameter = {}
                     hyperparameter['acc'] = acc
                     hyperparameter['loss'] = loss
