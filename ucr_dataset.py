@@ -18,7 +18,7 @@ class UCRDataset():
                 from utils.constants import MAX_SEQUENCE_LENGTH_LIST, dataset_map
                 data_path = 'UCRArchive_2018'
             did = dataset_map[dir]
-            if os.path.isdir(os.path.join(data_path, dir)) and (len(data_name_list) == 0 or dir in data_name_list) and ((is_on_the_colabpratory and MAX_SEQUENCE_LENGTH_LIST[did] > 400) or (not is_on_the_colabpratory and MAX_SEQUENCE_LENGTH_LIST[did] <= 400)):
+            if os.path.isdir(os.path.join(data_path, dir)) and (len(data_name_list) == 0 or dir in data_name_list) and (True or (is_on_the_colabpratory and MAX_SEQUENCE_LENGTH_LIST[did] > 400) or (not is_on_the_colabpratory and MAX_SEQUENCE_LENGTH_LIST[did] <= 400)):
                 train_and_valid_data = self.__sortByCategory(
                     np.loadtxt(os.path.join(data_path, dir, dir + '_TRAIN.tsv'), delimiter='\t', dtype=np.float32))
                 test_data = self.__sortByCategory(

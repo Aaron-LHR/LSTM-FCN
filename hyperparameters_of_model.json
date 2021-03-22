@@ -1,1 +1,674 @@
-{"ACSF1": {"acc": 0.8899999856948853, "loss": 0.026818502694368362, "batch_size": 128, "epochs": 2000, "cell": 64}, "Adiac": {"acc": 0.8414322137832642, "loss": 1.4315974563360214, "batch_size": 128, "epochs": 2000, "cell": 64}, "AllGestureWiimoteX": {"acc": 0.7114285826683044, "loss": 0.007254754425957799, "batch_size": 128, "epochs": 2000, "cell": 64}, "AllGestureWiimoteY": {"acc": 0.772857129573822, "loss": 0.003938743844628334, "batch_size": 128, "epochs": 2000, "cell": 64}, "AllGestureWiimoteZ": {"acc": 0.7128571271896362, "loss": 0.013871670875232667, "batch_size": 32, "epochs": 2000, "cell": 64}, "ArrowHead": {"acc": 0.845714271068573, "loss": 5.3562856919597834e-05, "batch_size": 128, "epochs": 2000, "cell": 64}, "Beef": {"acc": 0.7666667103767395, "loss": 0.0012525754282251, "batch_size": 32, "epochs": 2000, "cell": 64}, "Wine": {"acc": 0.5, "loss": 0.4367705285549164, "batch_size": 32, "epochs": 2000, "cell": 64}, "Yoga": {"acc": 0.871999979019165, "loss": 0.010719099809648469, "batch_size": 32, "epochs": 2000, "cell": 64}, "FaceAll": {"acc": 0.8958579897880554, "loss": 0.001405665316269733, "batch_size": 128, "epochs": 2000, "cell": 64}, "Fish": {"acc": 0.9542856812477112, "loss": 0.00545642149518244, "batch_size": 32, "epochs": 2000, "cell": 64}, "CricketX": {"acc": 0.764102578163147, "loss": 0.053176112938672304, "batch_size": 128, "epochs": 2000, "cell": 64}, "CricketY": {"acc": 0.7846153974533081, "loss": 0.04213403956964612, "batch_size": 128, "epochs": 2000, "cell": 64}, "CricketZ": {"acc": 0.7923077344894409, "loss": 0.058654455468058586, "batch_size": 128, "epochs": 2000, "cell": 64}, "UWaveGestureLibraryAll": {"acc": 0.823841392993927, "loss": 0.013178574619814754, "batch_size": 128, "epochs": 2000, "cell": 64}, "UWaveGestureLibraryX": {"acc": 0.7805694937705994, "loss": 0.014476807555183768, "batch_size": 128, "epochs": 2000, "cell": 64}, "UWaveGestureLibraryY": {"acc": 0.6954215168952942, "loss": 0.06322556477971375, "batch_size": 128, "epochs": 2000, "cell": 64}, "UWaveGestureLibraryZ": {"acc": 0.73618084192276, "loss": 0.018172031734138727, "batch_size": 128, "epochs": 2000, "cell": 64}, "BME": {"acc": 0.9933333396911621, "loss": 0.00023088503803592175, "batch_size": 128, "epochs": 2000, "cell": 64}, "CBF": {"acc": 0.995555579662323, "loss": 1.5878487829468213e-05, "batch_size": 128, "epochs": 2000, "cell": 64}, "DiatomSizeReduction": {"acc": 0.9379085302352905, "loss": 6.777470844099298e-05, "batch_size": 128, "epochs": 2000, "cell": 64}, "Chinatown": {"acc": 0.9766764044761658, "loss": 7.903537152742501e-06, "batch_size": 128, "epochs": 2000, "cell": 64}, "ChlorineConcentration": {"acc": 0.8140625357627869, "loss": 0.011661047989036888, "batch_size": 64, "epochs": 2000, "cell": 64}, "Coffee": {"acc": 1.0, "loss": 1.917968074849341e-05, "batch_size": 128, "epochs": 2000, "cell": 64}, "Crop": {"acc": 0.7600595355033875, "loss": 0.004652233841625275, "batch_size": 128, "epochs": 2000, "cell": 64}, "DistalPhalanxOutlineAgeGroup": {"acc": 0.7553957104682922, "loss": 0.0008765534148551524, "batch_size": 128, "epochs": 2000, "cell": 64}, "DistalPhalanxOutlineCorrect": {"acc": 0.77173912525177, "loss": 0.00010688394013413927, "batch_size": 128, "epochs": 2000, "cell": 64}, "DistalPhalanxTW": {"acc": 0.6978417634963989, "loss": 0.0010470134729985148, "batch_size": 128, "epochs": 2000, "cell": 64}, "DodgerLoopDay": {"acc": 0.637499988079071, "loss": 0.0002166457416024059, "batch_size": 128, "epochs": 2000, "cell": 64}, "DodgerLoopGame": {"acc": 0.8478261232376099, "loss": 0.00031500315526500344, "batch_size": 128, "epochs": 2000, "cell": 64}, "DodgerLoopWeekend": {"acc": 0.95652174949646, "loss": 1.5824885849724524e-05, "batch_size": 64, "epochs": 2000, "cell": 64}, "ECG200": {"acc": 0.8999999761581421, "loss": 2.9715751225012355e-05, "batch_size": 128, "epochs": 2000, "cell": 64}, "ECG5000": {"acc": 0.9420000314712524, "loss": 0.00015414731024065986, "batch_size": 128, "epochs": 2000, "cell": 64}, "ECGFiveDays": {"acc": 0.9883855581283569, "loss": 8.67631024448201e-06, "batch_size": 64, "epochs": 2000, "cell": 64}, "ElectricDevices": {"acc": 0.7410193085670471, "loss": 2.2968888473697007, "batch_size": 128, "epochs": 2000, "cell": 64}, "FaceFour": {"acc": 0.9431818723678589, "loss": 0.00010019439650932327, "batch_size": 128, "epochs": 2000, "cell": 64}, "FacesUCR": {"acc": 0.9297561049461365, "loss": 0.004202088690362871, "batch_size": 128, "epochs": 2000, "cell": 64}, "FreezerRegularTrain": {"acc": 0.9985965490341187, "loss": 0.001782183418981731, "batch_size": 128, "epochs": 2000, "cell": 64}, "FreezerSmallTrain": {"acc": 0.8207017779350281, "loss": 0.0006243642419576645, "batch_size": 128, "epochs": 2000, "cell": 64}, "Fungi": {"acc": 0.9946236610412598, "loss": 0.0003304585115984082, "batch_size": 128, "epochs": 2000, "cell": 64}, "GestureMidAirD1": {"acc": 0.607692301273346, "loss": 0.04747193120419979, "batch_size": 128, "epochs": 2000, "cell": 64}, "GestureMidAirD2": {"acc": 0.5692307949066162, "loss": 0.22239651530981064, "batch_size": 128, "epochs": 2000, "cell": 128}, "GestureMidAirD3": {"acc": 0.13076923787593842, "loss": 0.1633603349328041, "batch_size": 128, "epochs": 2000, "cell": 64}, "GunPoint": {"acc": 1.0, "loss": 2.2785208784625866e-05, "batch_size": 128, "epochs": 2000, "cell": 64}, "GunPointAgeSpan": {"acc": 0.9272152185440063, "loss": 0.07273893430829048, "batch_size": 128, "epochs": 2000, "cell": 64}, "GunPointMaleVersusFemale": {"acc": 1.0, "loss": 0.04938381817191839, "batch_size": 128, "epochs": 2000, "cell": 64}, "GunPointOldVersusYoung": {"acc": 1.0, "loss": 0.03025211315252818, "batch_size": 128, "epochs": 2000, "cell": 128}, "InsectWingbeatSound": {"acc": 0.4742424488067627, "loss": 0.007688521174713969, "batch_size": 128, "epochs": 2000, "cell": 128}, "ItalyPowerDemand": {"acc": 0.9582118391990662, "loss": 1.2374460311548319e-05, "batch_size": 128, "epochs": 2000, "cell": 128}, "Lightning7": {"acc": 0.8219177722930908, "loss": 0.0009880656143650413, "batch_size": 128, "epochs": 2000, "cell": 128}, "MedicalImages": {"acc": 0.7842105627059937, "loss": 0.085908567532897, "batch_size": 128, "epochs": 2000, "cell": 128}, "MelbournePedestrian": {"acc": 0.9692497253417969, "loss": 0.0012102000546292402, "batch_size": 128, "epochs": 2000, "cell": 128}, "MiddlePhalanxOutlineAgeGroup": {"acc": 0.5584415793418884, "loss": 0.005355817207600921, "batch_size": 128, "epochs": 2000, "cell": 64}, "MiddlePhalanxOutlineCorrect": {"acc": 0.8144329786300659, "loss": 0.0008431491442024708, "batch_size": 128, "epochs": 2000, "cell": 64}, "MiddlePhalanxTW": {"acc": 0.5129870176315308, "loss": 0.04426556988619268, "batch_size": 128, "epochs": 2000, "cell": 128}, "MoteStrain": {"acc": 0.9313098788261414, "loss": 2.4819024474709295e-05, "batch_size": 128, "epochs": 2000, "cell": 64}, "PhalangesOutlinesCorrect": {"acc": 0.8170163631439209, "loss": 0.03407310634793248, "batch_size": 128, "epochs": 2000, "cell": 64}, "PickupGestureWiimoteZ": {"acc": 0.7999999523162842, "loss": 0.00656002527102828, "batch_size": 128, "epochs": 2000, "cell": 64}, "Plane": {"acc": 1.0, "loss": 5.9649901231750846e-05, "batch_size": 128, "epochs": 2000, "cell": 64}, "PowerCons": {"acc": 0.9666666984558105, "loss": 0.0002952022914541885, "batch_size": 128, "epochs": 2000, "cell": 64}, "ProximalPhalanxOutlineAgeGroup": {"acc": 0.8487805128097534, "loss": 0.01724911294877529, "batch_size": 128, "epochs": 2000, "cell": 64}, "ProximalPhalanxOutlineCorrect": {"acc": 0.900343656539917, "loss": 0.0002044632437900873, "batch_size": 128, "epochs": 2000, "cell": 64}, "ProximalPhalanxTW": {"acc": 0.800000011920929, "loss": 0.035078327637165785, "batch_size": 128, "epochs": 2000, "cell": 64}, "ShakeGestureWiimoteZ": {"acc": 0.9399999976158142, "loss": 0.00033132266253232956, "batch_size": 128, "epochs": 2000, "cell": 64}, "SmoothSubspace": {"acc": 0.9933333396911621, "loss": 2.3352570678980555e-05, "batch_size": 128, "epochs": 2000, "cell": 64}, "SonyAIBORobotSurface1": {"acc": 0.9467554092407227, "loss": 3.144679794786498e-05, "batch_size": 128, "epochs": 2000, "cell": 64}, "SonyAIBORobotSurface2": {"acc": 0.9811122417449951, "loss": 2.9152852221159264e-05, "batch_size": 128, "epochs": 2000, "cell": 128}, "Strawberry": {"acc": 0.9810811281204224, "loss": 0.06575711350888014, "batch_size": 128, "epochs": 2000, "cell": 64}, "SwedishLeaf": {"acc": 0.9679999947547913, "loss": 0.0021903835295233876, "batch_size": 128, "epochs": 2000, "cell": 64}, "Symbols": {"acc": 0.9708542823791504, "loss": 0.00010133983596460894, "batch_size": 128, "epochs": 2000, "cell": 64}, "SyntheticControl": {"acc": 0.9833333492279053, "loss": 0.00013187417789595202, "batch_size": 128, "epochs": 2000, "cell": 64}, "ToeSegmentation1": {"acc": 0.9736841917037964, "loss": 1.5380817785626277e-05, "batch_size": 128, "epochs": 2000, "cell": 64}, "ToeSegmentation2": {"acc": 0.8999999761581421, "loss": 1.8066617485601455e-05, "batch_size": 128, "epochs": 2000, "cell": 64}, "Trace": {"acc": 1.0, "loss": 0.00026763242203742266, "batch_size": 128, "epochs": 2000, "cell": 64}, "TwoLeadECG": {"acc": 0.9991220831871033, "loss": 7.675998858758248e-06, "batch_size": 128, "epochs": 2000, "cell": 64}, "UMD": {"acc": 0.9791666865348816, "loss": 0.0001160044121206738, "batch_size": 128, "epochs": 2000, "cell": 64}, "Wafer": {"acc": 0.9972420334815979, "loss": 0.00014984451877353422, "batch_size": 128, "epochs": 2000, "cell": 64}, "WordSynonyms": {"acc": 0.5532914996147156, "loss": 0.1820076536387205, "batch_size": 128, "epochs": 2000, "cell": 64}, "FiftyWords": {"acc": 0.7098901271820068, "loss": 0.013744192430749536, "batch_size": 128, "epochs": 2000, "cell": 64}, "TwoPatterns": {"acc": 1.0, "loss": 0.00023404848252539523, "batch_size": 128, "epochs": 2000, "cell": 64}}
+{
+  "ACSF1": {
+    "acc": 0.8899999856948853,
+    "loss": 0.026818502694368362,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "Adiac": {
+    "acc": 0.8414322137832642,
+    "loss": 1.4315974563360214,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "AllGestureWiimoteX": {
+    "acc": 0.7114285826683044,
+    "loss": 0.007254754425957799,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "AllGestureWiimoteY": {
+    "acc": 0.772857129573822,
+    "loss": 0.003938743844628334,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "AllGestureWiimoteZ": {
+    "acc": 0.7128571271896362,
+    "loss": 0.013871670875232667,
+    "batch_size": 32,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "ArrowHead": {
+    "acc": 0.845714271068573,
+    "loss": 5.3562856919597834e-05,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "Beef": {
+    "acc": 0.7666667103767395,
+    "loss": 0.0012525754282251,
+    "batch_size": 32,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "Wine": {
+    "acc": 0.8333333134651184,
+    "loss": 0.01892731338739395,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "Yoga": {
+    "acc": 0.8819999694824219,
+    "loss": 0.0029078116931486875,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "FaceAll": {
+    "acc": 0.8958579897880554,
+    "loss": 0.001405665316269733,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "Fish": {
+    "acc": 0.9542856812477112,
+    "loss": 0.00545642149518244,
+    "batch_size": 32,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "CricketX": {
+    "acc": 0.764102578163147,
+    "loss": 0.053176112938672304,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "CricketY": {
+    "acc": 0.7846153974533081,
+    "loss": 0.04213403956964612,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "CricketZ": {
+    "acc": 0.7923077344894409,
+    "loss": 0.058654455468058586,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "UWaveGestureLibraryAll": {
+    "acc": 0.8243997097015381,
+    "loss": 0.007654662360437214,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "UWaveGestureLibraryX": {
+    "acc": 0.7805694937705994,
+    "loss": 0.014476807555183768,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "UWaveGestureLibraryY": {
+    "acc": 0.6954215168952942,
+    "loss": 0.06322556477971375,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "UWaveGestureLibraryZ": {
+    "acc": 0.7389726042747498,
+    "loss": 0.008382221043575555,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "BME": {
+    "acc": 0.9933333396911621,
+    "loss": 0.00023088503803592175,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "CBF": {
+    "acc": 0.995555579662323,
+    "loss": 1.5878487829468213e-05,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "DiatomSizeReduction": {
+    "acc": 0.9379085302352905,
+    "loss": 6.777470844099298e-05,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "Chinatown": {
+    "acc": 0.9766764044761658,
+    "loss": 7.903537152742501e-06,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "ChlorineConcentration": {
+    "acc": 0.8140625357627869,
+    "loss": 0.011661047989036888,
+    "batch_size": 64,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "Coffee": {
+    "acc": 1.0,
+    "loss": 1.917968074849341e-05,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "Crop": {
+    "acc": 0.7600595355033875,
+    "loss": 0.004652233841625275,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "DistalPhalanxOutlineAgeGroup": {
+    "acc": 0.7553957104682922,
+    "loss": 0.0008765534148551524,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "DistalPhalanxOutlineCorrect": {
+    "acc": 0.77173912525177,
+    "loss": 0.00010688394013413927,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "DistalPhalanxTW": {
+    "acc": 0.6978417634963989,
+    "loss": 0.0010470134729985148,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "DodgerLoopDay": {
+    "acc": 0.637499988079071,
+    "loss": 0.0002166457416024059,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "DodgerLoopGame": {
+    "acc": 0.8478261232376099,
+    "loss": 0.00031500315526500344,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "DodgerLoopWeekend": {
+    "acc": 0.95652174949646,
+    "loss": 1.5824885849724524e-05,
+    "batch_size": 64,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "ECG200": {
+    "acc": 0.8999999761581421,
+    "loss": 2.9715751225012355e-05,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "ECG5000": {
+    "acc": 0.9420000314712524,
+    "loss": 0.00015414731024065986,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "ECGFiveDays": {
+    "acc": 0.9883855581283569,
+    "loss": 8.67631024448201e-06,
+    "batch_size": 64,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "ElectricDevices": {
+    "acc": 0.7410193085670471,
+    "loss": 2.2968888473697007,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "FaceFour": {
+    "acc": 0.9431818723678589,
+    "loss": 0.00010019439650932327,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "FacesUCR": {
+    "acc": 0.9297561049461365,
+    "loss": 0.004202088690362871,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "FreezerRegularTrain": {
+    "acc": 0.9985965490341187,
+    "loss": 0.001782183418981731,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "FreezerSmallTrain": {
+    "acc": 0.8207017779350281,
+    "loss": 0.0006243642419576645,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "Fungi": {
+    "acc": 0.9946236610412598,
+    "loss": 0.0003304585115984082,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "GestureMidAirD1": {
+    "acc": 0.607692301273346,
+    "loss": 0.04747193120419979,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "GestureMidAirD2": {
+    "acc": 0.5692307949066162,
+    "loss": 0.22239651530981064,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 128
+  },
+  "GestureMidAirD3": {
+    "acc": 0.13076923787593842,
+    "loss": 0.1633603349328041,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "GunPoint": {
+    "acc": 1.0,
+    "loss": 2.2785208784625866e-05,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "GunPointAgeSpan": {
+    "acc": 0.9272152185440063,
+    "loss": 0.07273893430829048,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "GunPointMaleVersusFemale": {
+    "acc": 1.0,
+    "loss": 0.04938381817191839,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "GunPointOldVersusYoung": {
+    "acc": 1.0,
+    "loss": 0.03025211315252818,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 128
+  },
+  "InsectWingbeatSound": {
+    "acc": 0.4742424488067627,
+    "loss": 0.007688521174713969,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 128
+  },
+  "ItalyPowerDemand": {
+    "acc": 0.9582118391990662,
+    "loss": 1.2374460311548319e-05,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 128
+  },
+  "Lightning7": {
+    "acc": 0.8219177722930908,
+    "loss": 0.0009880656143650413,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 128
+  },
+  "MedicalImages": {
+    "acc": 0.7842105627059937,
+    "loss": 0.085908567532897,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 128
+  },
+  "MelbournePedestrian": {
+    "acc": 0.9692497253417969,
+    "loss": 0.0012102000546292402,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 128
+  },
+  "MiddlePhalanxOutlineAgeGroup": {
+    "acc": 0.5584415793418884,
+    "loss": 0.005355817207600921,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "MiddlePhalanxOutlineCorrect": {
+    "acc": 0.8144329786300659,
+    "loss": 0.0008431491442024708,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "MiddlePhalanxTW": {
+    "acc": 0.5129870176315308,
+    "loss": 0.04426556988619268,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 128
+  },
+  "MoteStrain": {
+    "acc": 0.9313098788261414,
+    "loss": 2.4819024474709295e-05,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "PhalangesOutlinesCorrect": {
+    "acc": 0.8170163631439209,
+    "loss": 0.03407310634793248,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "PickupGestureWiimoteZ": {
+    "acc": 0.7999999523162842,
+    "loss": 0.00656002527102828,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "Plane": {
+    "acc": 1.0,
+    "loss": 5.9649901231750846e-05,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "PowerCons": {
+    "acc": 0.9666666984558105,
+    "loss": 0.0002952022914541885,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "ProximalPhalanxOutlineAgeGroup": {
+    "acc": 0.8487805128097534,
+    "loss": 0.01724911294877529,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "ProximalPhalanxOutlineCorrect": {
+    "acc": 0.900343656539917,
+    "loss": 0.0002044632437900873,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "ProximalPhalanxTW": {
+    "acc": 0.800000011920929,
+    "loss": 0.035078327637165785,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "ShakeGestureWiimoteZ": {
+    "acc": 0.9399999976158142,
+    "loss": 0.00033132266253232956,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "SmoothSubspace": {
+    "acc": 0.9933333396911621,
+    "loss": 2.3352570678980555e-05,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "SonyAIBORobotSurface1": {
+    "acc": 0.9467554092407227,
+    "loss": 3.144679794786498e-05,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "SonyAIBORobotSurface2": {
+    "acc": 0.9811122417449951,
+    "loss": 2.9152852221159264e-05,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 128
+  },
+  "Strawberry": {
+    "acc": 0.9810811281204224,
+    "loss": 0.06575711350888014,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "SwedishLeaf": {
+    "acc": 0.9679999947547913,
+    "loss": 0.0021903835295233876,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "Symbols": {
+    "acc": 0.9708542823791504,
+    "loss": 0.00010133983596460894,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "SyntheticControl": {
+    "acc": 0.9833333492279053,
+    "loss": 0.00013187417789595202,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "ToeSegmentation1": {
+    "acc": 0.9736841917037964,
+    "loss": 1.5380817785626277e-05,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "ToeSegmentation2": {
+    "acc": 0.8999999761581421,
+    "loss": 1.8066617485601455e-05,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "Trace": {
+    "acc": 1.0,
+    "loss": 0.00026763242203742266,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "TwoLeadECG": {
+    "acc": 0.9991220831871033,
+    "loss": 7.675998858758248e-06,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "UMD": {
+    "acc": 0.9791666865348816,
+    "loss": 0.0001160044121206738,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "Wafer": {
+    "acc": 0.9972420334815979,
+    "loss": 0.00014984451877353422,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "WordSynonyms": {
+    "acc": 0.5532914996147156,
+    "loss": 0.1820076536387205,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "FiftyWords": {
+    "acc": 0.7098901271820068,
+    "loss": 0.013744192430749536,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "TwoPatterns": {
+    "acc": 1.0,
+    "loss": 0.00023404848252539523,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "WormsTwoClass": {
+    "acc": 0.6363636255264282,
+    "loss": 0.1559084663167596,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "Worms": {
+    "acc": 0.7532467246055603,
+    "loss": 0.039497194811701775,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "SemgHandMovementCh2": {
+    "acc": 0.5155555605888367,
+    "loss": 0.08734089322388172,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "ShapeletSim": {
+    "acc": 0.8055555820465088,
+    "loss": 1.488316229369957e-05,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "SmallKitchenAppliances": {
+    "acc": 0.765333354473114,
+    "loss": 0.12889064475893974,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "SemgHandSubjectCh2": {
+    "acc": 0.59333336353302,
+    "loss": 0.1205219542607665,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "StarLightCurves": {
+    "acc": 0.954346776008606,
+    "loss": 0.03874659992288798,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "ShapesAll": {
+    "acc": 0.8799999952316284,
+    "loss": 0.0034908620873466134,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "SemgHandGenderCh2": {
+    "acc": 0.8300000429153442,
+    "loss": 0.049361090175807476,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "Rock": {
+    "acc": 0.699999988079071,
+    "loss": 0.006345001515001059,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "PLAID": {
+    "acc": 0.3426443338394165,
+    "loss": 3.9724594354629517,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "ScreenType": {
+    "acc": 0.653333306312561,
+    "loss": 0.010601522168144584,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "RefrigerationDevices": {
+    "acc": 0.5066666603088379,
+    "loss": 0.005946193705312908,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "PigCVP": {
+    "acc": 0.6826923489570618,
+    "loss": 0.008793298155069351,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "OSULeaf": {
+    "acc": 0.9834710359573364,
+    "loss": 0.0004216475645080209,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  },
+  "PigArtPressure": {
+    "acc": 0.8317307829856873,
+    "loss": 0.0026072259061038494,
+    "batch_size": 128,
+    "epochs": 2000,
+    "cell": 64
+  }
+}
